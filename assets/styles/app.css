@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap');
+
+body {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 400;
+}
+
+#autocomplete-results {
+    position: absolute;
+    top: 50px;
+    border-left:1px solid black;
+    left: 0;
+    right: 0;
+    background: white;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+#autocomplete-results div {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#autocomplete-results div:hover {
+    background-color: #f0f0f0;
+}
+
+.separator {
+    height: 20px;
+}
+
+.top-movie-poster {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    z-index: 9999;
+    bottom: 120px;
+    left: 30px;
+}
+
+.top-movie-details {
+    height: 50px;
+    width: auto;
+    position: absolute;
+    z-index: 9999;
+    bottom: 15px;
+    left: 250px;
+    color: white;
+}
+
+.star-rating i {
+    font-size: 24px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-text {
+    flex-grow: 1;
+}
+
+.btn.mt-auto {
+    margin-top: auto;
+    align-self: flex-end;
+}

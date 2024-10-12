@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% include 'movie/_movie_modal_details.html.twig' %}
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">À propos de We Movies</a>
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        {% include 'movie/_movie_search_form.html.twig' %}
+    </nav>
+    {% if top_movie %}
+        <div class="row">
+            <div class="col-md-12 position-relative">
+                <div class="top-movie-poster">
+                    <img
+                            src="https://image.tmdb.org/t/p/w300{{ top_movie.poster_path }}"
+                            alt="{{ top_movie.title }}"
+                            id="trailer-image"
+                            class="img-fluid"
+                    >
+                </div>
+                <div class="top-movie-details">
+                    <b>{{ top_movie.original_title }}</b><br>
+                    <b>{{ top_movie.original_title }} Bande-annonce {{ top_movie.original_language|upper }}</b><br>
+                </div>
+                <div class="embed-responsive embed-responsive-16by9 position-relative" style="overflow: hidden;">
+                    {% set trailer = top_movie_videos | filter(v => v.type == 'Trailer' and v.site == 'YouTube') | first %}
+                    <iframe
+                            class="embed-responsive-item position-absolute"
+                            id="video-trailer"
+                            src="https://www.youtube.com/embed/{{ trailer.key }}"
+                            allowfullscreen
+                    ></iframe>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="separator"></div>
+    <div class="row">
+        <div class="col-md-4">
+            <ul class="list-group" id="genre-list"></ul>
+        </div>
+        <div class="col-md-8" id="movie-list"></div>
+    </div>
+</div>
+{% endblock %}

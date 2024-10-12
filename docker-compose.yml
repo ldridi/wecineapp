@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: wecine_app
+    restart: unless-stopped
+    ports:
+      - "80:80"    # Map Apache's port 80 to the host's port 80
+    environment:
+      APACHE_DOCUMENT_ROOT: /var/www/html/public
+    volumes:
+      - .:/var/www/html
+    networks:
+      - wecine-network
+
+  node:
+    image: node:18
+    container_name: wecine_node
+    working_dir: /var/www/html
+    command: bash -c "npm install && npm run dev -- --watch"
+    volumes:
+      - .:/var/www/html
+    networks:
+      - wecine-network
+
+networks:
+  wecine-network:
+    driver: bridge

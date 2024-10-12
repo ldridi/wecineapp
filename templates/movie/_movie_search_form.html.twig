@@ -1,0 +1,6 @@
+<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    {{ form_start(search_form, {'attr': {'class': 'form-inline my-2 my-lg-0', 'id': 'search-form'}}) }}
+    {{ form_widget(search_form.q) }}
+    <div id="autocomplete-results" class="autocomplete-results"></div>
+    {{ form_end(search_form) }}
+</div>
