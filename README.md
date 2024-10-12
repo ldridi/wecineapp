@@ -38,18 +38,17 @@ cd wecineapp
 docker-compose up --build -d
 sudo nano /etc/hosts
 127.0.0.1 wecineapp-app.local
-docker-compose up --build -d
 ```
 
 ### 3. Environment Variables
 ```console
 cp .env .env.local
-TMDB_API_KEY=your_tmdb_api_key
-TMDB_BEARER_TOKEN=your_bearer_token
-API_BASE_URL=https://api.themoviedb.org/3
-APP_ENV=dev
 ```
-
+```console
+TMDB_BEARER_TOKEN=your_bearer_token
+TMDB_API_URL=https://api.themoviedb.org/3
+TMDB_LANGUAGE=en-US
+```
 ### 4. Install PHP and Node.js Dependencies
 ```console
 docker-compose exec app composer install
